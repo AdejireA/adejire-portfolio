@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 
 const exploreLinks = [
   { label: "Projects", to: "/projects" },
@@ -9,7 +10,14 @@ const exploreLinks = [
   { label: "Leadership & Community", to: "/leadership" },
 ];
 
-const About = () => (
+const About = () => {
+  useSeo({
+    title: "About",
+    description: "Adejire Adegite is an Electrical and Electronics Engineering student at the Federal University of Technology, Akure, with interests in robotics, embedded systems, autonomous systems, and machine learning.",
+    path: "/about",
+  });
+
+  return (
   <Layout>
     <section className="page-shell pb-10 pt-14 md:pb-14 md:pt-20">
       <p className="eyebrow mb-4">About</p>
@@ -51,6 +59,7 @@ const About = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default About;

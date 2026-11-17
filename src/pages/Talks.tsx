@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 import awsScdPoster from "@/assets/aws-student-community-day-akure-2026-poster.jpg";
 import ieeeUnibenPoster from "@/assets/ieee-uniben-research-writing-bootcamp-poster.jpg";
 
@@ -57,7 +58,14 @@ const talks: TalkEntry[] = [
   },
 ];
 
-const Talks = () => (
+const Talks = () => {
+  useSeo({
+    title: "Talks & Events",
+    description: "Workshops, panels, and technical sessions with enough detail to be useful: the occasion, the role, and what was covered.",
+    path: "/talks",
+  });
+
+  return (
   <Layout>
     <section className="page-shell py-14 md:py-20">
       <p className="eyebrow mb-4">Talks & Events</p>
@@ -118,6 +126,7 @@ const Talks = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Talks;

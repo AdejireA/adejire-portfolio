@@ -28,6 +28,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const isActive = (path: string) => pathname === path || (path === "/projects" && pathname.startsWith("/projects/")) || (path === "/writing" && (pathname === "/blog" || pathname.startsWith("/writing/")));
+  const isMoreActive = moreLinks.some(({ path }) => isActive(path));
 
   useEffect(() => {
     const breakpoint = window.matchMedia("(min-width: 1024px)");
@@ -50,10 +51,10 @@ export default function Navbar() {
         <div className="hidden items-center gap-6 lg:flex">
           {navLinks.map(({ label, path }) => <Link key={label} to={path} className="nav-link" aria-current={isActive(path) ? "page" : undefined}>{label}</Link>)}
           <DropdownMenu>
-            <DropdownMenuTrigger className="nav-link inline-flex items-center gap-1">More <ChevronDown size={14} aria-hidden="true" /></DropdownMenuTrigger>
+            <DropdownMenuTrigger className={`nav-link inline-flex items-center gap-1 ${isMoreActive ? "text-primary" : ""}`}>More <ChevronDown size={14} aria-hidden="true" /></DropdownMenuTrigger>
             <DropdownMenuContent align="end" sideOffset={18} className="w-64 rounded-none p-2">
               {moreLinks.map(({ label, path }) => path ? (
-                <DropdownMenuItem key={label} asChild className="min-h-11"><Link to={path}>{label}</Link></DropdownMenuItem>
+                <DropdownMenuItem key={label} asChild className="min-h-11"><Link to={path} aria-current={isActive(path) ? "page" : undefined}>{label}</Link></DropdownMenuItem>
               ) : <DropdownMenuItem key={label} disabled className="min-h-11 flex-col items-start">{label}<span className="text-xs">Not available yet</span></DropdownMenuItem>)}
             </DropdownMenuContent>
           </DropdownMenu>

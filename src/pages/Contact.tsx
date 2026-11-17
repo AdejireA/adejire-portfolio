@@ -1,5 +1,6 @@
 import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 
 const contactLinks = [
   { icon: Mail, label: "Email", value: "adejireadegite@gmail.com", href: "mailto:adejireadegite@gmail.com" },
@@ -7,7 +8,14 @@ const contactLinks = [
   { icon: Linkedin, label: "LinkedIn", value: "adegite-adejire", href: "https://www.linkedin.com/in/adegite-adejire" },
 ];
 
-const Contact = () => (
+const Contact = () => {
+  useSeo({
+    title: "Contact",
+    description: "Open to conversations on robotics and autonomous systems, embedded systems and edge AI projects, research opportunities, and technical community initiatives.",
+    path: "/contact",
+  });
+
+  return (
   <Layout>
     <section className="page-shell py-14 md:py-20">
       <p className="eyebrow mb-4">Contact</p>
@@ -41,6 +49,7 @@ const Contact = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Contact;

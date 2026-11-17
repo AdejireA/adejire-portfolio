@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 
 type ResearchEntry = {
   id: string;
@@ -18,7 +19,7 @@ const researchEntries: ResearchEntry[] = [
     id: "label-free-fault-detection",
     question: "Does multimodal sensor fusion actually drive anomaly-detection performance, or does a stronger generative model account for the gain on its own?",
     title: "Label-Free Detection of Incipient Electro-Mechanical Faults via Cross-Modal Attention and Latent Diffusion",
-    status: "Co-authored with Oluwaferanmi Oladepo and Nunsi Shiaki at the Federal University of Technology, Akure. Presented at IEEE IRAI 2026 (IEEE International Conference on Responsible Artificial Intelligence). The research grew out of the IEEE Industrial Electronics Society Generative AI Hackathon, with contributions associated with the Smart Systems Research Laboratory (SSRL), FUTA, and Adejire's work on it carried out as an Independent AI/ML Researcher at Machine Learning Collective, Africa.",
+    status: "Co-authored with Oluwaferanmi Oladepo and Nunsi Shiaki at the Federal University of Technology, Akure. Accepted and presented at IEEE IRAI 2026 (IEEE International Conference on Responsible Artificial Intelligence). The research grew out of the IEEE Industrial Electronics Society Generative AI Hackathon, with contributions associated with the Smart Systems Research Laboratory (SSRL), FUTA, and Adejire's work on it carried out as an Independent AI/ML Researcher at Machine Learning Collective, Africa.",
     contribution: "Contributed to a label-free, multimodal bearing-fault detection pipeline trained only on healthy vibration and stator-current data, built specifically to isolate whether cross-modal fusion or generative model capacity was responsible for detection performance.",
     methodology: "Separate residual 1D-CNN encoders compress 100 ms vibration and current windows into 128-dimensional latents. A bidirectional cross-modal attention module fuses these into a shared latent space, trained end-to-end on healthy windows only from the Paderborn KAt bearing dataset. A latent diffusion model is trained afterwards on the frozen latents purely for interpretability; a Mahalanobis distance in the shared latent space is the anomaly score used at inference.",
     findings: "The fused representation reached AUROC 0.975, F1 0.950 and 92.2% recall on held-out Paderborn evaluation windows, against 0.920 AUROC for pre-fusion and unimodal baselines and 0.642 for the diffusion model alone — isolating cross-modal attention, not generative complexity, as the source of the gain. The same frozen pipeline transferred zero-shot to the CWRU bearing dataset (different sensors, no retraining) with AUROC 1.000. Reported limitations: validated on a single lab dataset plus one transfer dataset, and the false-alarm rate still varies by operating condition.",
@@ -52,7 +53,14 @@ const researchInterests = [
   ["04", "Reinforcement Learning for Robotics", "Exploring how learning-based methods can help robots make decisions and adapt to changing environments. A direction I'm building toward as I strengthen my foundations."],
 ];
 
-const Research = () => (
+const Research = () => {
+  useSeo({
+    title: "Research & Exploration",
+    description: "Research at the intersection of robotics, intelligent control, embedded systems, and machine learning, with a focus on reliable autonomous systems under real-world constraints.",
+    path: "/research",
+  });
+
+  return (
   <Layout>
     <section className="page-shell py-14 md:py-20">
       <p className="eyebrow mb-4">Research</p>
@@ -116,6 +124,7 @@ const Research = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Research;

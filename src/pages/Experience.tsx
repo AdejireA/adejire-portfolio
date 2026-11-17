@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 
 type ExperienceEntry = {
   id: string;
@@ -16,7 +17,7 @@ const experience: ExperienceEntry[] = [
     period: "March 2024 — Present",
     contributions: [
       "Prototyped and debugged multi-sensor IoT systems, writing firmware to interface with microcontrollers over I2C, SPI, UART and MQTT.",
-      "Directed hardware testbeds for edge-AI research, including the work behind an electromechanical fault-detection paper accepted at IEEE IRAI 2026 (Melbourne).",
+      "Directed hardware testbeds for edge-AI research, including the work behind an electromechanical fault-detection paper accepted and presented at IEEE IRAI 2026 (Melbourne).",
       "Mentored incoming interns on embedded architecture, circuit bring-up and sensor pipelines, and standardised diagnostic workflows across the lab.",
     ],
   },
@@ -35,7 +36,7 @@ const experience: ExperienceEntry[] = [
     id: "ath",
     role: "Resources and Partnerships",
     organization: "Akure Tech Hub — Mechatronics Community",
-    period: "September 2024 — Present",
+    period: "September 2024 — May 2026",
     contributions: [
       "Developed and distributed content to simplify complex robotics and mechatronics concepts for the community.",
       "Built partnerships with other hubs, labs, departmental leaders and institutions to support knowledge exchange and opportunities for members.",
@@ -43,7 +44,14 @@ const experience: ExperienceEntry[] = [
   },
 ];
 
-const Experience = () => (
+const Experience = () => {
+  useSeo({
+    title: "Experience",
+    description: "Hardware, firmware and research support work, alongside a first internship outside the university.",
+    path: "/experience",
+  });
+
+  return (
   <Layout>
     <section className="page-shell py-14 md:py-20">
       <p className="eyebrow mb-4">Experience</p>
@@ -72,6 +80,7 @@ const Experience = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Experience;

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import portrait from "@/assets/adejire-portrait.jpeg";
 import { projects } from "@/data/projects";
+import { useSeo } from "@/hooks/useSeo";
 
 const links = [
   { label: "GitHub", href: "https://github.com/AdejireA", icon: Github },
@@ -11,6 +12,11 @@ const links = [
 ];
 
 export default function Home() {
+  useSeo({
+    title: "Robotics & Embedded Systems",
+    description: "Robotics, embedded systems, and machine learning, from experiments to working systems.",
+    path: "/",
+  });
   return <Layout>
     <section className="phase1-hero page-shell" aria-labelledby="hero-title">
       <div className="phase1-hero-copy">
@@ -50,7 +56,7 @@ export default function Home() {
       <p className="v2-overline">03 / EXPERIENCE &amp; LEADERSHIP</p>
       <div className="v2-research-preview-body">
         <h2>Built in <i>labs and communities.</i></h2>
-        <p>Hardware and research work at FUTA's Smart Systems Research Laboratory, alongside leading the IEEE FUTA Student Branch through its reactivation, an electrical engineering internship, and ongoing mechatronics community work.</p>
+        <p>Hardware and research work at FUTA's Smart Systems Research Laboratory, alongside leading the IEEE FUTA Student Branch through its reactivation, an electrical engineering internship, and mechatronics community work.</p>
         <div className="v2-preview-links">
           <Link to="/experience" className="v2-text-link">SSRL &amp; technical experience <ArrowUpRight size={16}/></Link>
           <Link to="/leadership" className="v2-text-link">IEEE FUTA &amp; leadership <ArrowUpRight size={16}/></Link>

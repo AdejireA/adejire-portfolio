@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { format, parseISO } from "date-fns";
 import Layout from "@/components/Layout";
 import { publishedArticles, WRITING_CATEGORIES, type WritingCategory } from "@/lib/writing";
+import { useSeo } from "@/hooks/useSeo";
 
 type Filter = "All" | WritingCategory;
 
@@ -18,6 +19,11 @@ const formatDate = (date: string) => {
 };
 
 const Writing = () => {
+  useSeo({
+    title: "Writing",
+    description: "Technical ideas, research notes, experiments, and reflections from building and learning.",
+    path: "/writing",
+  });
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
 
   const visibleArticles = useMemo(

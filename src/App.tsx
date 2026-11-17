@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
@@ -25,7 +25,9 @@ const App = () => (
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/writing" element={<Writing />} />
         <Route path="/writing/:slug" element={<WritingArticle />} />
-        <Route path="/blog" element={<Writing />} />
+        {/* Vercel issues a permanent redirect for this in production (see vercel.json);
+            this client-side fallback keeps /blog -> /writing working in local dev/preview too. */}
+        <Route path="/blog" element={<Navigate to="/writing" replace />} />
         <Route path="/research" element={<Research />} />
         <Route path="/talks" element={<Talks />} />
         <Route path="/awards" element={<Awards />} />

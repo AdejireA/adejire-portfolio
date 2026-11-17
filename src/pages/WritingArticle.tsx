@@ -5,6 +5,7 @@ import { format, parseISO } from "date-fns";
 import Layout from "@/components/Layout";
 import { getArticleBySlug } from "@/lib/writing";
 import { renderMarkdown } from "@/lib/markdown";
+import { useSeo } from "@/hooks/useSeo";
 
 const formatDate = (date: string) => {
   try {
@@ -17,6 +18,12 @@ const formatDate = (date: string) => {
 const WritingArticle = () => {
   const { slug } = useParams();
   const article = slug ? getArticleBySlug(slug) : undefined;
+
+  useSeo(
+    article
+      ? { title: article.title, description: article.description, path: `/writing/${article.slug}` }
+      : { title: "Article not found", description: "This article doesn't exist, or hasn't been published yet.", path: `/writing/${slug ?? ""}`, noIndex: true },
+  );
 
   const html = useMemo(() => (article ? renderMarkdown(article.content) : ""), [article]);
 

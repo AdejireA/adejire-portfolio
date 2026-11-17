@@ -3,6 +3,7 @@ import { ArrowUpRight, Github } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { projects as featuredProjects } from "@/data/projects";
+import { useSeo } from "@/hooks/useSeo";
 
 const archiveProjects = [
   {
@@ -80,6 +81,11 @@ const featuredSlugs = new Set(featuredProjects.map(project => project.slug));
 const moreProjects = archiveProjects.filter(project => !featuredSlugs.has(project.id));
 
 const Projects = () => {
+  useSeo({
+    title: "Projects",
+    description: "A mix of embedded systems, robotics simulation and applied machine learning, documenting not only what worked but the limits of each result.",
+    path: "/projects",
+  });
   const [openProject, setOpenProject] = useState<string | null>(null);
 
   return (
@@ -99,7 +105,7 @@ const Projects = () => {
             return (
               <article key={project.id} className="border-b border-border">
                 <button
-                  className="grid w-full gap-3 py-6 text-left sm:grid-cols-[44px_minmax(0,1fr)_auto] sm:items-start sm:gap-5"
+                  className="group grid w-full gap-3 py-6 text-left sm:grid-cols-[44px_minmax(0,1fr)_auto] sm:items-start sm:gap-5"
                   aria-expanded={isOpen}
                   onClick={() => setOpenProject(isOpen ? null : project.id)}
                 >

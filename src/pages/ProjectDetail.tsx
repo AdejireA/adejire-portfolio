@@ -2,12 +2,18 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import Layout from "@/components/Layout";
 import { projects } from "@/data/projects";
+import { useSeo } from "@/hooks/useSeo";
 
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = projects.find(item => item.slug === slug);
-  if (!project) return <Layout><main className="page-shell py-32"><h1 className="text-4xl">Project not found.</h1><Link className="v2-text-link mt-8 inline-flex" to="/projects">Back to projects <ArrowUpRight size={16}/></Link></main></Layout>;
-  return <Layout><main className="page-shell v2-case-study">
+  useSeo(
+    project
+      ? { title: project.caseStudyTitle || project.title, description: project.summary, path: `/projects/${project.slug}` }
+      : { title: "Project not found", description: "This project could not be found.", path: `/projects/${slug ?? ""}`, noIndex: true },
+  );
+  if (!project) return <Layout><div className="page-shell py-32"><h1 className="text-4xl">Project not found.</h1><Link className="v2-text-link mt-8 inline-flex" to="/projects">Back to projects <ArrowUpRight size={16}/></Link></div></Layout>;
+  return <Layout><div className="page-shell v2-case-study">
     <Link to="/projects" className="v2-back"><ArrowLeft size={16}/> ALL PROJECTS</Link>
     <p className="v2-overline">{project.field} / {project.year}</p><h1>{project.caseStudyTitle || project.title}<span className="v2-title-dot">.</span></h1><p className="v2-case-lead">{project.summary}</p>
     {project.image && <div className="v2-case-cover"><img src={project.image} alt={project.imageAlt}/><span>01 / PROJECT EVIDENCE</span></div>}
@@ -20,5 +26,5 @@ export default function ProjectDetail() {
     </div></div>
     {project.secondaryImage && <figure className="v2-case-secondary"><img src={project.secondaryImage} alt={project.secondaryAlt||"Supporting project figure"}/><figcaption>02 / SUPPORTING EVIDENCE · SOURCE: PROJECT REPOSITORY</figcaption></figure>}
     <div className="v2-case-next"><Link to="/projects" className="v2-text-link"><ArrowLeft size={16}/> Back to all projects</Link></div>
-  </main></Layout>;
+  </div></Layout>;
 }

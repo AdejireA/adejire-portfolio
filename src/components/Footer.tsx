@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, BookOpen, Hash } from "lucide-react";
 const links = [
   { icon: Github, href: "https://github.com/AdejireA", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/adegite-adejire", label: "LinkedIn" },
-  { icon: BookOpen, href: "https://medium.com/@AdejireA", label: "Medium" },
+  { icon: BookOpen, href: "https://medium.com/@adejireadegite", label: "Medium" },
   { icon: Hash, href: "https://hashnode.com/@AdejireA", label: "Hashnode" },
   { icon: Mail, href: "mailto:adejireadegite@gmail.com", label: "Email" },
 ];

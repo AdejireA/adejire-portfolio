@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 
 type LeadershipEntry = {
   id: string;
@@ -53,7 +54,14 @@ const leadership: LeadershipEntry[] = [
   },
 ];
 
-const Leadership = () => (
+const Leadership = () => {
+  useSeo({
+    title: "Leadership & Community",
+    description: "Positions, initiatives and mentorship across the IEEE FUTA Student Branch, NIEEES, and SSRL.",
+    path: "/leadership",
+  });
+
+  return (
   <Layout>
     <section className="page-shell py-14 md:py-20">
       <p className="eyebrow mb-4">Leadership &amp; Community</p>
@@ -82,6 +90,7 @@ const Leadership = () => (
       </div>
     </section>
   </Layout>
-);
+  );
+};
 
 export default Leadership;
