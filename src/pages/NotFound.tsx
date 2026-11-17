@@ -1,8 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { useSeo } from "@/hooks/useSeo";
 
 const NotFound = () => {
   const location = useLocation();
+  useSeo({
+    title: "Page not found",
+    description: "This page doesn't exist.",
+    path: location.pathname,
+    noIndex: true,
+  });
 
   return (
     <Layout>

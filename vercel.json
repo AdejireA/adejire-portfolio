@@ -1,3 +1,4 @@
 {
+  "redirects": [{ "source": "/blog", "destination": "/writing", "permanent": true }],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

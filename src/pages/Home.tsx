@@ -1,94 +1,77 @@
-import { motion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, MoveUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import Layout from "@/components/Layout";
-import portrait from "@/assets/adejire-portrait.jpeg";
+import portrait from "@/assets/adejire-portrait.webp";
+import { projects } from "@/data/projects";
+import { useSeo } from "@/hooks/useSeo";
 
-const socials = [
-  { icon: Github, href: "https://github.com/AdejireA", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/adegite-adejire", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:adejireadegite@gmail.com", label: "Email" },
+const links = [
+  { label: "GitHub", href: "https://github.com/AdejireA", icon: Github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/adegite-adejire", icon: Linkedin },
+  { label: "Email", href: "mailto:adejireadegite@gmail.com", icon: Mail },
 ];
 
-const Home = () => (
-  <Layout>
-    <section className="page-shell grid min-h-[calc(88vh-68px)] items-center gap-12 py-16 md:grid-cols-[minmax(0,1.3fr)_minmax(260px,0.7fr)] md:gap-16 md:py-20">
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
-        <p className="eyebrow mb-6">Electrical & Electronics Engineering · FUTA</p>
-        <h1 className="max-w-3xl text-balance text-5xl leading-[1.04] sm:text-6xl lg:text-7xl">
-          Adejire <span className="text-primary">Adegite.</span>
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground/85 md:text-xl">
-          I’m an engineering student learning to build reliable robotic and embedded systems, from the sensors and firmware to the software that makes a machine move.
-        </p>
-        <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
-          My current work spans ROS 2 robot simulation, edge-based battery anomaly detection, and energy monitoring. I’m strengthening my foundations in C++, robotics software, and machine learning while documenting what I learn.
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <Link to="/projects" className="inline-flex items-center gap-2 border-b border-primary pb-1 text-sm font-medium text-foreground transition-colors hover:text-primary">
-            Explore projects <ArrowUpRight size={15} />
-          </Link>
-          <Link to="/writing" className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary">
-            Read my logs <ArrowUpRight size={15} />
-          </Link>
-        </div>
-        <div className="mt-9 flex items-center gap-5">
-          {socials.map(({ icon: Icon, href, label }) => (
-            <a key={label} href={href} aria-label={label} title={label} target={label === "Email" ? undefined : "_blank"} rel={label === "Email" ? undefined : "noopener noreferrer"} className="text-muted-foreground transition-colors hover:text-primary">
-              <Icon size={18} strokeWidth={1.7} />
-            </a>
-          ))}
-          <span className="h-4 border-l border-border" />
-          <span className="font-mono text-xs text-muted-foreground">Akure, Nigeria</span>
-        </div>
-      </motion.div>
-
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="relative mx-auto w-full max-w-sm md:mx-0 md:justify-self-end">
-        <div className="absolute -bottom-3 -left-3 h-full w-full border border-primary/70" />
-        <img src={portrait} alt="Adejire Adegite" className="relative aspect-[4/5] w-full object-cover object-top grayscale-[12%]" />
-        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Build · test · learn · repeat</p>
-      </motion.div>
-    </section>
-
-    <section className="section-rule">
-      <div className="page-shell grid gap-8 py-10 md:grid-cols-[180px_1fr] md:gap-14">
-        <p className="eyebrow pt-1">What I’m focused on</p>
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div>
-            <h2 className="text-lg">Robotics & autonomy</h2>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">ROS 2, simulation, navigation and safe handover between autonomous control and a human operator.</p>
-          </div>
-          <div>
-            <h2 className="text-lg">Embedded systems</h2>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">Microcontrollers, sensor integration, telemetry and systems that have to work beyond a notebook demo.</p>
-          </div>
-          <div>
-            <h2 className="text-lg">Applied ML</h2>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">Learning the fundamentals through measurable projects, with a long-term interest in learning-based robotics.</p>
-          </div>
-          <div>
-            <h2 className="text-lg">Engineering in context</h2>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">Exploring practical systems for energy, agriculture and other problems where reliability and cost matter.</p>
-          </div>
+export default function Home() {
+  useSeo({
+    title: "Robotics & Embedded Systems",
+    description: "Robotics, embedded systems, and machine learning, from experiments to working systems.",
+    path: "/",
+  });
+  return <Layout>
+    <section className="phase1-hero page-shell" aria-labelledby="hero-title">
+      <div className="phase1-hero-copy">
+        <p className="hero-name">ADEJIRE ADEGITE</p>
+        <p className="hero-discipline">ROBOTICS / EMBEDDED SYSTEMS / EDGE INTELLIGENCE</p>
+        <h1 id="hero-title">Building towards intelligent machines that work in the <em>real world.</em></h1>
+        <p className="hero-intro">Robotics, embedded systems, and machine learning, from experiments to working systems.</p>
+        <div className="v2-hero-actions">
+          <Link to="/projects" className="v2-button-primary">Explore My Work <ArrowRight size={17} aria-hidden="true" /></Link>
+          <Link to="/about" className="hero-secondary">About Me <ArrowUpRight size={16} aria-hidden="true" /></Link>
         </div>
       </div>
+      <figure className="hero-portrait">
+        <img src={portrait} alt="Portrait of Adejire Adegite" fetchPriority="high" loading="eager" width={1000} height={1288} />
+        <figcaption><span>ADEJIRE ADEGITE</span><span>AKURE, NIGERIA</span></figcaption>
+      </figure>
     </section>
 
-    <section className="page-shell py-14 md:py-16">
-      <div className="grid gap-5 md:grid-cols-[180px_1fr] md:gap-14">
-        <p className="eyebrow pt-1">A note on this site</p>
-        <div>
-          <p className="max-w-3xl text-foreground/85 leading-7">
-            This is a working record, not a claim that I already know everything I’m interested in. I want to understand the systems I build well enough to explain the design decisions, debug them when they fail, and evaluate whether they actually work.
-          </p>
-          <Link to="/about" className="mt-5 inline-flex items-center gap-2 text-sm text-primary hover:underline">
-            More about me <ArrowUpRight size={15} />
-          </Link>
+    <section className="v2-work-section" id="work"><div className="page-shell">
+      <div className="v2-section-heading"><div><p className="v2-overline">01 / SELECTED WORK</p><h2>Engineering, <i>in practice.</i></h2></div><Link to="/projects" className="v2-text-link">All projects <ArrowUpRight size={16}/></Link></div>
+      <div className="v2-project-list">{projects.map((project,index)=><Link to={`/projects/${project.slug}`} className={`v2-project${project.image ? "" : " !grid-cols-1"}`} key={project.slug}>
+        {project.image && <div className="v2-project-media"><img src={project.image} alt={project.imageAlt} loading="lazy"/><span className="v2-image-corner">0{index+1} / 03</span></div>}
+        <div className="v2-project-copy"><div className="v2-project-meta">{project.field} <span>{project.year}</span></div><h3>{project.title}</h3><p>{project.summary}</p><div className="v2-project-bottom"><span>{project.stack.slice(0,3).join(" · ")}</span><span className="v2-project-arrow"><MoveUpRight size={19}/></span></div></div>
+      </Link>)}</div>
+    </div></section>
+
+    <section className="v2-research-preview"><div className="page-shell v2-research-preview-inner">
+      <p className="v2-overline">02 / RESEARCH &amp; EXPLORATION</p>
+      <div className="v2-research-preview-body">
+        <h2>Research with <i>open questions.</i></h2>
+        <p>My research interests lie at the intersection of robotics, intelligent control, embedded systems, and machine learning &mdash; particularly how autonomous systems stay reliable when operating conditions, computing resources, and available information are limited.</p>
+        <Link to="/research" className="v2-text-link">Read research <ArrowUpRight size={16}/></Link>
+      </div>
+    </div></section>
+
+    <section className="v2-research-preview"><div className="page-shell v2-research-preview-inner">
+      <p className="v2-overline">03 / EXPERIENCE &amp; LEADERSHIP</p>
+      <div className="v2-research-preview-body">
+        <h2>Built in <i>labs and communities.</i></h2>
+        <p>Hardware and research work at FUTA's Smart Systems Research Laboratory, alongside leading the IEEE FUTA Student Branch through its reactivation, an electrical engineering internship, and mechatronics community work.</p>
+        <div className="v2-preview-links">
+          <Link to="/experience" className="v2-text-link">SSRL &amp; technical experience <ArrowUpRight size={16}/></Link>
+          <Link to="/leadership" className="v2-text-link">IEEE FUTA &amp; leadership <ArrowUpRight size={16}/></Link>
         </div>
       </div>
-    </section>
-  </Layout>
-);
+    </div></section>
 
-export default Home;
+    <section className="page-shell v2-thinking"><div><p className="v2-overline">04 / AREAS OF INTEREST</p><h2>Curiosity with<br/><i>an engineering method.</i></h2></div><div className="v2-interest-list">{[
+      ["01", "Robotics & autonomy", "Navigation, human-in-the-loop control, localisation, and safety behaviour."],
+      ["02", "Embedded & cyber-physical systems", "Sensing, firmware, telemetry, and hardware-software integration."],
+      ["03", "Edge intelligence", "Machine learning methods evaluated under real compute constraints."],
+    ].map(([num,title,description])=><div className="v2-interest" key={num}><span>{num}</span><div><h3>{title}</h3><p>{description}</p></div><ArrowUpRight size={16}/></div>)}</div></section>
+
+    <section className="v2-note"><div className="page-shell v2-note-inner"><p className="v2-overline">05 / THE APPROACH</p><blockquote>“A system isn't finished when it runs. I want to know <em>how it behaves when conditions change.</em>”</blockquote><Link to="/research" className="v2-text-link">Research and experiments <ArrowUpRight size={16}/></Link></div></section>
+
+    <section className="page-shell v2-contact-strip"><div><p className="v2-overline">06 / CONNECT</p><h2>Let's talk about <i>what's next.</i></h2><p>Research collaborations, engineering projects, and thoughtful conversations.</p></div><div className="v2-socials">{links.map(({label,href,icon:Icon})=><a key={label} href={href} target={label==="Email"?undefined:"_blank"} rel={label==="Email"?undefined:"noopener noreferrer"}><Icon size={18}/>{label}<ArrowUpRight size={14}/></a>)}</div></section>
+  </Layout>;
+}
