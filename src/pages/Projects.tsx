@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { ArrowUpRight, Github } from "lucide-react";
 import Layout from "@/components/Layout";
+import { Link } from "react-router-dom";
+import { projects as featuredProjects } from "@/data/projects";
 
-const projects = [
+const archiveProjects = [
   {
+    id: "solar-monitoring",
     title: "Solar Energy Monitoring System",
     category: "Embedded systems · Energy",
     status: "Built and tested",
@@ -15,6 +18,7 @@ const projects = [
     repo: "https://github.com/AdejireA/solar-energy-monitoring-system",
   },
   {
+    id: "battery-anomaly-edge",
     title: "Battery Anomaly Detection at the Edge",
     category: "Machine learning · Edge computing",
     status: "Research project",
@@ -26,17 +30,19 @@ const projects = [
     repo: "https://github.com/AdejireA/battery-anomaly-edge",
   },
   {
+    id: "agricultural-field-scout",
     title: "ROS 2 Agricultural Field Scout",
     category: "Robotics · Simulation",
     status: "Final-year project",
     summary: "Simulation-based evaluation of a dual-mode agricultural scouting robot with autonomous navigation and manual override.",
     problem: "A field robot needs predictable handover between autonomous navigation and a human operator, plus a reliable stop response when commands disappear.",
     contribution: "Built a ROS 2 mode-arbitration node between Nav2 velocity output and keyboard teleoperation, with a dedicated mode topic and a dead-man timeout. Evaluated it in a Gazebo crop-row environment.",
-    result: "Across 60 simulation trials, the node passed all 80 mode-switch tests, measured 39.2 ms median dead-man response time, and reached 97.8% navigation success (352/360 waypoints). The evaluation used a fixed map-to-odom transform; it did not implement SLAM or live LiDAR obstacle avoidance.",
+    result: "The final Phase B evaluation contains 60 simulation trials across reference, manual intervention and command-loss conditions. The final report records 0.553 seconds mean command-loss-to-stop time. AMCL localisation was used; the system remains simulation-only.",
     stack: "ROS 2 Jazzy · Nav2 · Gazebo Harmonic · Python",
-    repo: "https://github.com/AdejireA/ros2-farm-scout-FYP",
+    repo: "https://github.com/AdejireA/ros2-farm-scout-FYP/tree/phase-b-redesign",
   },
   {
+    id: "line-following-robot",
     title: "Line Following Robot",
     category: "Embedded robotics",
     status: "Built",
@@ -47,6 +53,7 @@ const projects = [
     stack: "IR sensor array · PID control · Differential drive · Firmware",
   },
   {
+    id: "smart-home-automation",
     title: "Smart Home Automation System",
     category: "Embedded systems",
     status: "Built",
@@ -57,6 +64,7 @@ const projects = [
     stack: "Microcontroller firmware · Environmental sensors · Wireless communication · Embedded C",
   },
   {
+    id: "unmanned-ground-vehicle",
     title: "Unmanned Ground Vehicle",
     category: "Robotics platform",
     status: "Prototype",
@@ -68,8 +76,11 @@ const projects = [
   },
 ];
 
+const featuredSlugs = new Set(featuredProjects.map(project => project.slug));
+const moreProjects = archiveProjects.filter(project => !featuredSlugs.has(project.id));
+
 const Projects = () => {
-  const [openProject, setOpenProject] = useState<string | null>("ROS 2 Agricultural Field Scout");
+  const [openProject, setOpenProject] = useState<string | null>(null);
 
   return (
     <Layout>
@@ -80,15 +91,17 @@ const Projects = () => {
           A mix of embedded systems, robotics simulation and applied machine learning. I try to document not only what worked, but also the limits of each result.
         </p>
 
+        <div className="mt-10 grid gap-5 md:grid-cols-3">{featuredProjects.map(project => <Link to={`/projects/${project.slug}`} key={project.slug} className="group overflow-hidden border border-border bg-card">{project.image && <div className="aspect-[4/3] overflow-hidden bg-secondary"><img className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src={project.image} alt={project.imageAlt} loading="lazy"/></div>}<div className="p-5"><p className="eyebrow text-[10px]">{project.field}</p><h2 className="mt-2 text-xl">{project.title}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{project.summary}</p><span className="mt-5 inline-flex items-center gap-2 text-sm text-primary">Read case study <ArrowUpRight size={15}/></span></div></Link>)}</div>
+        <h2 className="mt-16 text-xl">More projects</h2>
         <div className="mt-12 border-t border-border">
-          {projects.map((project, index) => {
-            const isOpen = openProject === project.title;
+          {moreProjects.map((project, index) => {
+            const isOpen = openProject === project.id;
             return (
-              <article key={project.title} className="border-b border-border">
+              <article key={project.id} className="border-b border-border">
                 <button
                   className="grid w-full gap-3 py-6 text-left sm:grid-cols-[44px_minmax(0,1fr)_auto] sm:items-start sm:gap-5"
                   aria-expanded={isOpen}
-                  onClick={() => setOpenProject(isOpen ? null : project.title)}
+                  onClick={() => setOpenProject(isOpen ? null : project.id)}
                 >
                   <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
                   <span>

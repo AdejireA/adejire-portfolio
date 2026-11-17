@@ -1,37 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-
-const roles = [
-  {
-    period: "2026 — present",
-    role: "Chair",
-    organization: "IEEE FUTA Student Branch",
-    detail: "Leading student-branch activities, technical programming and opportunities for engineering students to learn together.",
-  },
-  {
-    period: "Research experience",
-    role: "Lab Manager & Hardware Lead",
-    organization: "Smart Systems Research Laboratory (SSRL), FUTA",
-    detail: "Contributing to embedded systems, robotics, IoT and intelligent-system work, including hardware coordination and research support.",
-  },
-  {
-    period: "2024 — present",
-    role: "Team Lead",
-    organization: "Akure Tech Hub · Mechatronics Community",
-    detail: "Helping coordinate a community around robotics, mechatronics, practical learning and technical collaboration.",
-  },
-  {
-    period: "Product project",
-    role: "Team Lead / Product Manager",
-    organization: "TerraSync",
-    detail: "Coordinating an agricultural technology product concept focused on practical guidance and monitoring for smallholder farmers.",
-  },
-  {
-    period: "2024",
-    role: "General Secretary",
-    organization: "NIEEES FUTA",
-    detail: "Supported administration, communication and coordination for the student engineering society.",
-  },
-];
 
 const About = () => (
   <Layout>
@@ -67,17 +36,13 @@ const About = () => (
       </div>
 
       <div className="mt-16 border-t border-border pt-10">
-        <p className="eyebrow mb-7">Community & leadership</p>
-        <div className="border-t border-border">
-          {roles.map((item) => (
-            <article key={item.organization} className="grid gap-2 border-b border-border py-5 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-8">
-              <p className="font-mono text-xs text-muted-foreground">{item.period}</p>
-              <div>
-                <h2 className="text-lg">{item.role} <span className="text-muted-foreground">· {item.organization}</span></h2>
-                <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">{item.detail}</p>
-              </div>
-            </article>
-          ))}
+        <p className="eyebrow mb-4">Experience &amp; leadership</p>
+        <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
+          Technical work and research responsibilities are documented on the Experience page. Leadership positions and community initiatives are on the Leadership &amp; Community page.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-6">
+          <Link to="/experience" className="v2-text-link">Experience <ArrowUpRight size={15}/></Link>
+          <Link to="/leadership" className="v2-text-link">Leadership &amp; Community <ArrowUpRight size={15}/></Link>
         </div>
       </div>
     </section>
