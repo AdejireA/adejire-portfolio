@@ -1,8 +1,8 @@
-import gazeboFarmEnvironment from "@/assets/ros2-gazebo-topdown-environment.png";
-import batteryScoreDrift from "@/assets/battery-score-drift.png";
-import batteryCleanFpr from "@/assets/battery-clean-fpr.png";
-import solarInstalledSystem from "@/assets/solar-installed-system.jpg";
-import solarControllerBoard from "@/assets/solar-controller-board.jpg";
+import gazeboFarmEnvironment from "@/assets/ros2-gazebo-topdown-environment.webp";
+import batteryScoreDrift from "@/assets/battery-score-drift.webp";
+import batteryCleanFpr from "@/assets/battery-clean-fpr.webp";
+import solarInstalledSystem from "@/assets/solar-installed-system.webp";
+import solarControllerBoard from "@/assets/solar-controller-board.webp";
 
 export type Project = { slug: string; title: string; caseStudyTitle?: string; field: string; year: string; summary: string; challenge: string; contribution: string; outcome: string; resultsSource?: string; limitations: string; stack: string[]; repo: string; image?: string; imageAlt?: string; navigationImage?: string; navigationAlt?: string; secondaryImage?: string; secondaryAlt?: string };
 

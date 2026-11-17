@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { useSeo } from "@/hooks/useSeo";
-import awsScdPoster from "@/assets/aws-student-community-day-akure-2026-poster.jpg";
-import ieeeUnibenPoster from "@/assets/ieee-uniben-research-writing-bootcamp-poster.jpg";
+import awsScdPoster from "@/assets/aws-student-community-day-akure-2026-poster.webp";
+import ieeeUnibenPoster from "@/assets/ieee-uniben-research-writing-bootcamp-poster.webp";
 
 type TalkEntry = {
   id: string;
@@ -45,16 +45,6 @@ const talks: TalkEntry[] = [
       "A session on responsible academic writing, covering when and how to cite sources, IEEE referencing conventions, and the importance of research integrity.",
     poster: ieeeUnibenPoster,
     posterAlt: "Title slide for “Citations, IEEE Referencing & Research Ethics,” presented by Adejire Adegite",
-  },
-  {
-    id: "nextgen-innovation-challenge-2026",
-    date: "2026",
-    role: "Finalist / Project Presenter",
-    event: "NextGen Innovation Challenge 2026 — International Grand Finale",
-    location: "London, United Kingdom",
-    description:
-      "Presented TerraSync, an AI-enabled agricultural decision-support platform, at the international grand finale of the NextGen Innovation Challenge in London.",
-    details: ["Project: TerraSync", "NextGen Innovation Challenge 2026, International Grand Finale", "London, United Kingdom"],
   },
 ];
 

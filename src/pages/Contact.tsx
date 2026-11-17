@@ -42,9 +42,6 @@ const Contact = () => {
         <aside className="h-fit border-l border-border pl-5">
           <p className="eyebrow mb-4">Location</p>
           <p className="flex items-center gap-2 text-sm text-foreground"><MapPin size={15} className="text-primary" /> Akure, Nigeria</p>
-          <p className="mt-5 text-sm leading-6 text-muted-foreground">
-            Email is the best way to reach me. I try to keep this page simple and direct, with no contact form that silently depends on a service behind the scenes.
-          </p>
         </aside>
       </div>
     </section>

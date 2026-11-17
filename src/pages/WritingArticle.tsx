@@ -61,7 +61,7 @@ const WritingArticle = () => {
 
         {article.coverImage && (
           <div className="mt-10 aspect-[16/9] w-full overflow-hidden border border-border bg-muted">
-            <img src={article.coverImage} alt={article.title} className="h-full w-full object-cover" />
+            <img src={article.coverImage} alt={article.title} loading="lazy" className="h-full w-full object-cover" />
           </div>
         )}
 

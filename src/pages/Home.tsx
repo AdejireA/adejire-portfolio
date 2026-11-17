@@ -1,7 +1,7 @@
 import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, MoveUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import portrait from "@/assets/adejire-portrait.jpeg";
+import portrait from "@/assets/adejire-portrait.webp";
 import { projects } from "@/data/projects";
 import { useSeo } from "@/hooks/useSeo";
 
@@ -30,7 +30,7 @@ export default function Home() {
         </div>
       </div>
       <figure className="hero-portrait">
-        <img src={portrait} alt="Adejire Adegite" fetchPriority="high" />
+        <img src={portrait} alt="Portrait of Adejire Adegite" fetchPriority="high" loading="eager" width={1000} height={1288} />
         <figcaption><span>ADEJIRE ADEGITE</span><span>AKURE, NIGERIA</span></figcaption>
       </figure>
     </section>
