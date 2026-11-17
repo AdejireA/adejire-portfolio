@@ -8,11 +8,11 @@ const navLinks = [
   { label: "Research", path: "/research" },
   { label: "Experience", path: "/experience" },
   { label: "About", path: "/about" },
-  { label: "Just Logs", path: "/writing" },
+  { label: "Writing", path: "/writing" },
 ];
 const moreLinks = [
   { label: "Leadership & Community", path: "/leadership" },
-  { label: "Awards & Recognition", path: null },
+  { label: "Awards & Recognition", path: "/awards" },
   { label: "Talks & Events", path: "/talks" },
   { label: "Contact", path: "/contact" },
 ];
@@ -27,7 +27,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const isActive = (path: string) => pathname === path || (path === "/projects" && pathname.startsWith("/projects/")) || (path === "/writing" && pathname === "/blog");
+  const isActive = (path: string) => pathname === path || (path === "/projects" && pathname.startsWith("/projects/")) || (path === "/writing" && (pathname === "/blog" || pathname.startsWith("/writing/")));
 
   useEffect(() => {
     const breakpoint = window.matchMedia("(min-width: 1024px)");

@@ -18,7 +18,7 @@ const researchEntries: ResearchEntry[] = [
     id: "label-free-fault-detection",
     question: "Does multimodal sensor fusion actually drive anomaly-detection performance, or does a stronger generative model account for the gain on its own?",
     title: "Label-Free Detection of Incipient Electro-Mechanical Faults via Cross-Modal Attention and Latent Diffusion",
-    status: "Co-authored with Oluwaferanmi Oladepo and Nunsi Shiaki (Federal University of Technology, Akure). Presented at IEEE IRAI 2026 (IEEE International Conference on Responsible Artificial Intelligence); credited in part to the Smart Systems Research Laboratory (SSRL) at FUTA. The work grew out of the IEEE Industrial Electronics Society Generative AI Hackathon.",
+    status: "Co-authored with Oluwaferanmi Oladepo and Nunsi Shiaki at the Federal University of Technology, Akure. Presented at IEEE IRAI 2026 (IEEE International Conference on Responsible Artificial Intelligence). The research grew out of the IEEE Industrial Electronics Society Generative AI Hackathon, with contributions associated with the Smart Systems Research Laboratory (SSRL), FUTA, and Adejire's work on it carried out as an Independent AI/ML Researcher at Machine Learning Collective, Africa.",
     contribution: "Contributed to a label-free, multimodal bearing-fault detection pipeline trained only on healthy vibration and stator-current data, built specifically to isolate whether cross-modal fusion or generative model capacity was responsible for detection performance.",
     methodology: "Separate residual 1D-CNN encoders compress 100 ms vibration and current windows into 128-dimensional latents. A bidirectional cross-modal attention module fuses these into a shared latent space, trained end-to-end on healthy windows only from the Paderborn KAt bearing dataset. A latent diffusion model is trained afterwards on the frozen latents purely for interpretability; a Mahalanobis distance in the shared latent space is the anomaly score used at inference.",
     findings: "The fused representation reached AUROC 0.975, F1 0.950 and 92.2% recall on held-out Paderborn evaluation windows, against 0.920 AUROC for pre-fusion and unimodal baselines and 0.642 for the diffusion model alone — isolating cross-modal attention, not generative complexity, as the source of the gain. The same frozen pipeline transferred zero-shot to the CWRU bearing dataset (different sensors, no retraining) with AUROC 1.000. Reported limitations: validated on a single lab dataset plus one transfer dataset, and the false-alarm rate still varies by operating condition.",
@@ -46,9 +46,10 @@ const researchEntries: ResearchEntry[] = [
 ];
 
 const researchInterests = [
-  ["01", "Robust Robot Navigation", "Reliable localisation, navigation, and control under changing or uncertain conditions."],
-  ["02", "Learning for Autonomous Systems", "Exploring reinforcement learning and machine learning approaches for robot decision-making and intelligent control."],
-  ["03", "Edge Intelligence", "Running useful machine learning models on resource-constrained hardware, particularly for agriculture and energy applications."],
+  ["01", "Agricultural Robotics", "Autonomous scouting, monitoring, and navigation systems designed around the practical challenges of agricultural environments."],
+  ["02", "Edge & Embedded Intelligence", "Machine learning, sensing, and intelligent decision-making on resource-constrained hardware, including applications in energy monitoring."],
+  ["03", "Robotics & Autonomous Systems", "Robot navigation, localisation, control architectures, and safe interaction between autonomous systems and human operators."],
+  ["04", "Reinforcement Learning for Robotics", "Exploring how learning-based methods can help robots make decisions and adapt to changing environments. A direction I'm building toward as I strengthen my foundations."],
 ];
 
 const Research = () => (
@@ -96,8 +97,11 @@ const Research = () => (
       </div>
 
       <div className="mt-16">
-        <p className="eyebrow mb-2">Research interests</p>
-        <h2 className="text-xl">Directions I want to take this, not completed research.</h2>
+        <p className="eyebrow mb-2">Research Interests</p>
+        <h2 className="text-xl">Questions I'm exploring.</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+          Areas I'm interested in developing through further research.
+        </p>
         <div className="mt-8 border-t border-border">
           {researchInterests.map(([number, title, detail]) => (
             <article key={number} className="grid gap-3 border-b border-border py-5 sm:grid-cols-[44px_minmax(0,1fr)] sm:gap-5">

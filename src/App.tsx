@@ -4,9 +4,11 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
-import Blog from "./pages/Blog";
+import Writing from "./pages/Writing";
+import WritingArticle from "./pages/WritingArticle";
 import Research from "./pages/Research";
 import Talks from "./pages/Talks";
+import Awards from "./pages/Awards";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
 import Leadership from "./pages/Leadership";
@@ -21,10 +23,12 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
-        <Route path="/writing" element={<Blog />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/writing" element={<Writing />} />
+        <Route path="/writing/:slug" element={<WritingArticle />} />
+        <Route path="/blog" element={<Writing />} />
         <Route path="/research" element={<Research />} />
         <Route path="/talks" element={<Talks />} />
+        <Route path="/awards" element={<Awards />} />
         <Route path="/about" element={<About />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/leadership" element={<Leadership />} />

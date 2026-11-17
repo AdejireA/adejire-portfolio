@@ -17,7 +17,7 @@ export default function Home() {
         <p className="hero-name">ADEJIRE ADEGITE</p>
         <p className="hero-discipline">ROBOTICS / EMBEDDED SYSTEMS / EDGE INTELLIGENCE</p>
         <h1 id="hero-title">Building towards intelligent machines that work in the <em>real world.</em></h1>
-        <p className="hero-intro">I'm Adejire Adegite, an Electrical and Electronics Engineering student at the Federal University of Technology, Akure. My interests span robotics, embedded systems, autonomous systems and machine learning, with a particular focus on practical applications in agriculture and energy.</p>
+        <p className="hero-intro">Robotics, embedded systems, and machine learning, from experiments to working systems.</p>
         <div className="v2-hero-actions">
           <Link to="/projects" className="v2-button-primary">Explore My Work <ArrowRight size={17} aria-hidden="true" /></Link>
           <Link to="/about" className="hero-secondary">About Me <ArrowUpRight size={16} aria-hidden="true" /></Link>
