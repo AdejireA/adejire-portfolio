@@ -26,13 +26,13 @@ const About = () => {
       <div className="mt-8 grid gap-12 md:grid-cols-[minmax(0,1.2fr)_minmax(220px,0.8fr)] md:gap-20">
         <div className="space-y-5 text-[15px] leading-7 text-muted-foreground">
           <p>
-            I'm Adejire Adegite, an Electrical and Electronics Engineering student at the Federal University of Technology, Akure, with interests in robotics, embedded systems, autonomous systems, and machine learning.
+            I am Adejire Adegite, an Electrical and Electronics Engineering student at the Federal University of Technology, Akure, with interests in robotics, embedded systems, autonomous systems, and machine learning.
           </p>
           <p>
             I enjoy building intelligent systems that connect hardware and software to solve real-world problems. My experience includes developing robots, embedded monitoring systems, and edge AI applications, with a growing focus on reliable autonomous systems for agriculture and energy.
           </p>
           <p>
-            Beyond engineering, I'm involved in research and hardware development at the Smart Systems Research Laboratory and serve as Chair of the IEEE FUTA Student Branch. I enjoy leading technical initiatives, collaborating with other engineers, and creating opportunities for students to learn, build, and grow.
+            Beyond engineering, I am involved in research and hardware development at the Smart Systems Research Laboratory and serve as Chair of the IEEE FUTA Student Branch. I enjoy leading technical initiatives, collaborating with other engineers, and creating opportunities for students to learn, build, and grow.
           </p>
         </div>
 
